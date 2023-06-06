@@ -1,14 +1,13 @@
-import { useNavigate, Link, } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = ({ searchText, setSearchText }) => {
-
-  const history = useNavigate()
+  const history = useNavigate();
 
   const updateSearchText = (e) => {
-    history("/moviebrowser/search");
-    
+    history("/search");
+
     setSearchText(e.target.value);
-  }   
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -58,6 +57,6 @@ const Navbar = ({ searchText, setSearchText }) => {
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
