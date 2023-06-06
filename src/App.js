@@ -4,7 +4,6 @@ import Home from "./components/Home";
 import AboutView from "./components/About";
 import SearchView from "./components/SearchView";
 import { Routes, Route } from "react-router-dom";
-// import { HashRouter } from 'react-router-dom';
 import MovieView from "./components/MovieView";
 import { useState, useEffect } from "react";
 
@@ -28,6 +27,7 @@ function App() {
   // setSearchText(searchText) => function
 
   return (
+    
     <div>
       <Navbar searchText={searchText} setSearchText={setSearchText} />
       <Routes>
@@ -37,8 +37,7 @@ function App() {
           path="/search"
           element={
             <SearchView keyword={searchText} searchResults={searchResults} />
-          }
-        />
+          }/>
         <Route path="/movies/:id" element={<MovieView />} />
       </Routes>
     </div>
