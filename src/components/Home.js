@@ -10,7 +10,7 @@ const Home = () => {
       .then((Response) => Response.json())
       .then((dt) => 
         setpopMovies(dt.results));
-  }, [popMovies])
+  }, [])
 
   let resultsHtml2 
 
