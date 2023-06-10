@@ -23,15 +23,17 @@ function App() {
     }
   }, [searchText]);
 
-  // searchText => variable
-  // setSearchText(searchText) => function
+// -------------------
+
+// https://api.themoviedb.org/3/movie/popular?api_key=58507cc706ac67cc8ba97b098c38a449&language=en-US&page=1
+
 
   return (
     
     <div>
       <Navbar searchText={searchText} setSearchText={setSearchText} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>} />
         <Route path="/about" element={<AboutView />} />
         <Route
           path="/search"

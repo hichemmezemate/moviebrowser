@@ -9,8 +9,6 @@ const MovieView = () => {
   const [movieDetails, setMovieDetails] = useState({});
 
   const [isLoading, setIsLoading] = useState(true);
-//   const [error, setError] = useState(true);
-
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=58507cc706ac67cc8ba97b098c38a449&language=en-US`
@@ -19,7 +17,6 @@ const MovieView = () => {
       .then((data) => {
         setMovieDetails(data);
         setIsLoading(false)
-        // setError(false);
       });
   }, [id]);
 
@@ -31,13 +28,11 @@ const MovieView = () => {
     if (movieDetails) {
       let posterPath = "";
       if (movieDetails.poster_path == null) {
-        // const posterPath = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
         posterPath = myImage;
       } else {
         posterPath = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
       }
-      let genre = "";
-      console.log(movieDetails.genres);
+      let genre = "";;
       if (movieDetails.genres.length === 0) {
         genre = "not available";
       } else {
@@ -47,7 +42,23 @@ const MovieView = () => {
           genre = movieDetails.genres["name"];
         }
       }
-      // const posterPath = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
+
+      let votes = "not available";
+      if (movieDetails.vote_average) {
+        votes = movieDetails.vote_average
+      }
+
+      let prod_country1;
+      if(movieDetails.production_countries) {
+        if((movieDetails.production_countries.length !== 0)) {
+          console.log(movieDetails.production_countries)
+        
+          prod_country1 = movieDetails.production_countries[0]['name'];
+        } else {
+        prod_country1 = 'Not Defined';
+        }}
+
+
 
       const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`;
       return (
@@ -55,20 +66,22 @@ const MovieView = () => {
           <Hero text={movieDetails.original_title} backdrop={backdropUrl}/>
           <div className="container my-5">
             <div className="row">
-              <div className="col-md-3">
+              <div className="col">
                 <img
                   src={posterPath}
                   alt="immm"
                   className="img-fluid shadow rounded"
                 />
               </div>
-              <div className="col-md-9">
+              <div className="col">
                 <h2>{movieDetails.original_title}</h2>
                 <p className="lead">{movieDetails.overview}</p>
                 <p className="lead">
                   Release Date : {movieDetails.release_date}
                 </p>
                 <p className="lead">Genre : {genre}</p>
+                <p className="lead">Votes : {votes}</p>
+                <p className="lead">Production countries : {prod_country1}</p>
               </div>
             </div>
           </div>
