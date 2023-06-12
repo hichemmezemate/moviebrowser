@@ -12,7 +12,6 @@ const SearchView = ({ keyword, searchResults }) => {
   resultsHtml = searchResults?.map((obj, i) => {
         return <MovieCard movie={obj} key={i} />});
   if (Object.keys(searchResults).length === 0) {
-    console.log("not found");
     return <Hero text="Not Found" />;
   } else {
     resultsHtml = searchResults.map((obj, i) => {
@@ -25,8 +24,8 @@ const SearchView = ({ keyword, searchResults }) => {
     <div>
       <Hero text={title} />
       {resultsHtml && (
-        <div className="container">
-          <div className="row">{resultsHtml}</div>
+        <div className="container g-0 ">
+          <div className="row py-5">{resultsHtml}</div>
         </div>
       )}
     </div>

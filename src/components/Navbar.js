@@ -5,7 +5,6 @@ const Navbar = ({ searchText, setSearchText }) => {
 
   const updateSearchText = (e) => {
     history("/search");
-
     setSearchText(e.target.value);
   };
 
@@ -45,7 +44,7 @@ const Navbar = ({ searchText, setSearchText }) => {
               type="search"
               placeholder="Search"
               aria-label="Search"
-              // defaultValue={'type movie name'}
+
               defaultValue={searchText}
               onChange={updateSearchText}
             />
